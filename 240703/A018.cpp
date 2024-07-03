@@ -5,6 +5,8 @@
 // 1 trial 
 // B의 가장 큰 인덱스, A의 최소값 index 움직여야함4
 
+// not solved yet 
+
 
 // TIME OVER / https://www.acmicpc.net/problem/1026
 
