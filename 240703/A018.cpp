@@ -1,14 +1,16 @@
-// idea BÀÇ °ªÀ» ±âÁØÀ¸·Î A¸¦ Àç¹è¿­ÇØ¾ßÇÔ 
+// idea Bì˜ ê°’ì„ ê¸°ì¤€ìœ¼ë¡œ Aë¥¼ ì¬ë°°ì—´í•´ì•¼í•¨ 
 // N <= 50
 // A, B elements <= 100 
 
 // 1 trial 
-// BÀÇ °¡Àå Å« ÀÎµ¦½º, AÀÇ ÃÖ¼Ò°ª index ¿òÁ÷¿©¾ßÇÔ4
+// Bì˜ ê°€ì¥ í° ì¸ë±ìŠ¤, Aì˜ ìµœì†Œê°’ index ì›€ì§ì—¬ì•¼í•¨4
 
 // not solved yet 
-
-
 // TIME OVER / https://www.acmicpc.net/problem/1026
+
+// idea, bë¥¼ sortí•œ í•¨ìˆ˜ í™œìš©(indexêµ¬í•˜ê¸°)
+// ì°¾ì€ ì¸ë±ìŠ¤ì— ë”°ë¼ aê°’ sort
+
 
 #include <iostream>
 #include <vector>
@@ -47,7 +49,7 @@ int main()
     int* B; 
     int result; 
 
-//ÀÔ·Â 
+//ì…ë ¥ 
     cin >> N; 
     A = new int[N];
     B = new int[N]; 
@@ -55,18 +57,18 @@ int main()
     Input(A, N);
     Input(B, N);
 
-// A list ¿À¸§ Â÷¼øÀ¸·Î Á¤·Ä 
+// A list ì˜¤ë¦„ ì°¨ìˆœìœ¼ë¡œ ì •ë ¬ 
     vector<int> A_asce_sort(A, A + N);
     sort(A_asce_sort.begin(), A_asce_sort.end());  
 
 
-// BÀÇ ÃÖ¼Ú°ªÀ» Ã£´Â °Í (maxÀÇ index)
+// Bì˜ ìµœì†Ÿê°’ì„ ì°¾ëŠ” ê²ƒ (maxì˜ index)
     int* B_checked = new int[N]; 
     int* A_list_index = new int[N]; 
 
     for(int i =0; i < N; i++) B_checked[i] = 0;  // intialize 
 
-// BÀÇ ÃÖ¼Ú°ªÀ» Ã£À½ (RETRY)
+// Bì˜ ìµœì†Ÿê°’ì„ ì°¾ìŒ (RETRY)
     for(int i =0; i < N; i++)
     {
         int max = B[i]; 
@@ -83,7 +85,7 @@ int main()
         }
     }
 
-// A°ª Á¤·Ä 
+// Aê°’ ì •ë ¬ 
     for(int i = 0; i < N; i++)
     {
         A[A_list_index[i]] =  A_asce_sort[i]; 
@@ -92,7 +94,7 @@ int main()
 PrintList(A_list_index, N);
 PrintList(A, N);
 
-//Ãâ·Â 
+//ì¶œë ¥ 
     result = S(N, A, B);
     printf("%d", result);
 
